@@ -15,7 +15,6 @@ def operation_error_handler(function):
 
         while tries:
             try:
-                print function.__name__
                 return function(*args, **kwargs)
             except mysql_base.Database.OperationalError:
                 log = logging.getLogger(__name__)
