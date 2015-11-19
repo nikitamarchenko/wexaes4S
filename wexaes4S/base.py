@@ -13,7 +13,7 @@ def operation_error_handler(function):
         self = args[0]
         tries = self.settings_dict.get('OPERATION_ERROR_TRIES', 30)
 
-        while tries:
+        while tries > 0:
             try:
                 return function(*args, **kwargs)
             except mysql_base.Database.OperationalError:
@@ -30,7 +30,7 @@ def operation_error_handler(function):
                 time.sleep(sleep)
 
         log = logging.getLogger(__name__)
-        log.exception()
+        log.exception('')
 
     return wrapper
 
