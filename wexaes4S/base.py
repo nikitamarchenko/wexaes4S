@@ -56,9 +56,6 @@ class CursorWrapper(mysql_base.CursorWrapper):
 
 class DatabaseWrapper(mysql_base.DatabaseWrapper):
 
-    def __init__(self, *args, **kwargs):
-        super(DatabaseWrapper, self).__init__(*args, **kwargs)
-
     @operation_error_handler
     def get_new_connection(self, *args, **kwargs):
         return super(DatabaseWrapper, self).get_new_connection(*args, **kwargs)
